@@ -1,0 +1,465 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+:root {
+  --primary-color: #8f49e4;
+  --secondary-color: #d0d0d0;
+  --background-color: #0f1114;
+  --accent-color: #d0fd39;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'DM Sans', sans-serif;
+  font-optical-sizing: auto;
+  scrollbar-width: thin;
+}
+
+body,
+html {
+  color: var(--secondary-color);
+  scrollbar-color: var(--accent-color) black;
+}
+
+.stop_scroll {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+h2 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+button {
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.background {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(0.5px);
+}
+
+/*_____________________________________*/
+/* Styly pro hlavičku a navigační menu */
+/*‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ */
+.navbar {
+  background-color: var(--background-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid var(--secondary-color);
+  padding: 0 calc((100% - 1300px) / 2);
+  z-index: 10;
+}
+
+.header {
+  max-width: 1200px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo {
+  color: var(--primary-color);
+}
+
+.navigation {
+  background-color: var(--background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  z-index: 10;
+  transform: translateX(100%);
+  transition: all 0.5s ease-in-out;
+}
+
+.navigation.is_active {
+  transform: translateX(0);
+}
+
+.navigation li {
+  width: 100vw;
+  display: block;
+  border: 1px solid var(--secondary-color);
+  opacity: 0;
+}
+
+.navigation a {
+  display: flex;
+  padding: 18px 15px;
+  transition: all 0.3s ease-out;
+}
+
+.navigation a:hover {
+  background-color: var(--primary-color);
+}
+
+.btn_navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+  transform-origin: left center;
+}
+
+.btn_navigation.is_active .line:nth-child(1) {
+  transform: rotate(45deg);
+}
+.btn_navigation.is_active .line:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+.btn_navigation.is_active .line:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+@keyframes navLinkFade {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.navigation.is_active .navigation_links li {
+  animation: navLinkFade 0.3s ease forwards;
+}
+.navigation_links li:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.navigation_links li:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.navigation_links li:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.navigation_links li:nth-child(4) {
+  animation-delay: 0.5s;
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    display: flex;
+    align-items: center;
+  }
+
+  .btn_navigation {
+    display: none;
+  }
+
+  .navigation {
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    transform: translateX(0);
+    transition: none;
+  }
+
+  .navigation ul {
+    display: flex;
+  }
+
+  .navigation li {
+    opacity: 1;
+    animation: none;
+    width: fit-content;
+    border: none;
+  }
+
+  .navigation a {
+    height: max-content;
+    padding: 18px 15px;
+    font-size: 1.1rem;
+  }
+}
+
+/* ______________________ */
+/* Styly pro úvodní sekci */
+/* ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ */
+.about {
+  height: 100vh;
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about_content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 1.15rem;
+}
+
+.about_content h1 {
+  color: var(--primary-color);
+}
+
+.about_content span {
+  color: var(--accent-color);
+}
+
+.about_content_links {
+  display: flex;
+  justify-content: end;
+  gap: 15px;
+}
+
+.about svg {
+  width: 30px;
+  color: var(--accent-color);
+  transform: scale(1);
+  transition: all 0.5s ease-out;
+}
+
+.about svg:hover {
+  transform: scale(1.2);
+  color: var(--primary-color);
+}
+
+.about_img {
+  display: flex;
+  justify-content: center;
+}
+
+.about img {
+  width: 80%;
+  border-radius: 215px;
+  border-bottom: 1px solid #d0d0d0;
+  background: url('../public/hi.png') lightgray 50% / cover no-repeat, conic-gradient(from 180deg at 50% 50%, rgba(15, 17, 20, 0) 107.42715954780579deg, rgba(15, 17, 20, 0) 251.56734466552734deg, rgba(208, 208, 208, 0.1) 360deg);
+}
+
+@media (min-width: 576px) {
+  .about_content {
+    padding: 50px 20px 0 35px;
+  }
+  .about img {
+    width: 400px;
+  }
+}
+
+@media (min-width: 768px) {
+  .about {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 4.5rem;
+    gap: 30px;
+  }
+  .about img {
+    width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .about img {
+    width: 400px;
+  }
+}
+
+@media (min-width: 1210px) {
+  .about {
+    margin: 0 auto;
+    padding: 7rem;
+    width: 1200px;
+  }
+}
+
+/* Styly pro dovednosti je v src/components/Skills/Skill.css */
+
+/* Styly pro projekty je v src/components/Projects/Projects.css */
+
+/* _________________ */
+/* Styly pro patičku */
+/* ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid var(--secondary-color);
+  margin-top: 25px;
+  background-color: var(--background-color);
+}
+
+/* ___________________________ */
+/* Styly pro kontakní formulář */
+/* ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾ */
+.contact_btn {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 7px;
+  border: 2px solid var(--accent-color);
+  border-radius: 100%;
+  background-color: #0f1114e2;
+  transform: scale(1);
+  transition: all 0.5s ease-in;
+}
+
+.contact_btn.is_active,
+.contact_modal,
+.overlay {
+  display: none;
+}
+
+.contact_btn:hover {
+  transform: scale(1.2);
+  border-color: transparent;
+}
+
+.contact_btn svg {
+  height: 20px;
+  color: var(--accent-color);
+  display: flex;
+}
+
+.contact_modal.is_active {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-color);
+  border-radius: 10px;
+  box-shadow: 0 0 7rem rgba(255, 255, 255, 0.4);
+  z-index: 25;
+  padding: 2.5rem 2rem;
+}
+
+.modal_close_icon {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  height: 35px;
+  color: var(--secondary-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin: 0 15px;
+  color: var(--secondary-color);
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input,
+textarea {
+  width: 75vw;
+  max-width: 350px;
+  resize: none;
+  border: 2px solid var(--secondary-color);
+  color: var(--secondary-color);
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 10px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-color) !important;
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
+input:-webkit-autofill {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--secondary-color);
+}
+
+label {
+  font-size: 1.1rem;
+  padding-bottom: 3px;
+}
+
+.submit_btn {
+  color: var(--secondary-color);
+  font-size: 1.15rem;
+  background-color: var(--primary-color);
+  border-radius: 50px;
+  width: 50%;
+  padding: 9px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
+}
+
+.submit_btn:hover {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+
+.disabled {
+  background-color: grey !important;
+  cursor: default;
+  color: var(--secondary-color) !important;
+}
+
+.overlay.is_active {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 20;
+}
+
+@media (min-width: 576px) {
+  .contact_btn {
+    bottom: 17px;
+    left: 17px;
+  }
+
+  .contact_btn svg {
+    width: 25x;
+    height: 25px;
+  }
+}
