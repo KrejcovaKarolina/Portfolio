@@ -35,8 +35,8 @@ To run this project locally, follow these steps:
 ### 2. Backend Configuration
 
 - Navigate to the `php/` folder.
-- Create a file named `config.php` (this file is ignored by Git for security).
-- Use the following template and fill in your credentials:
+- Create a file named `config.php` in the root directory.
+- Populate this file with the variables provided in the `config.php.sample.php` template and enter your local database credentials.
 
 ### 3. Install Dependencies
 
@@ -46,5 +46,5 @@ To run this project locally, follow these steps:
 
 ### 4. Run the Project
 
-- Start your local server (XAMPP/Apache)
-- In the project terminal, start the React development server: `npm start`
+- Start your local server (XAMPP/Apache).
+- In the project terminal, start the React development server: `npm start`.
